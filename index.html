@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Experience the magic with Your Favorite Santa Claus - High-end holiday visits, parties, and dream listening.">
+    <title>Your Favorite Santa Claus | A Magical Experience</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Reenie+Beanie&display=swap" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        holly: '#D41421',
+                        frosted: '#E2E8F0',
+                        champagne: '#F7E7CE',
+                        midnight: '#0F172A',
+                    },
+                    borderRadius: {
+                        '4xl': '32px',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        cursive: ['Reenie Beanie', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FFFFFF;
+            cursor: none;
+            overflow-x: hidden;
+        }
+        
+        .magic-cursor {
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(212, 20, 33, 1) 0%, rgba(247, 231, 206, 0) 70%);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: multiply;
+        }
+        
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sleigh-path-container {
+            position: relative;
+            height: 200vh;
+        }
+        
+        .path-svg {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            stroke-dasharray: 10;
+        }
+        
+        @keyframes snow {
+            0% {
+                transform: translateY(-10vh) translateX(0);
+            }
+            100% {
+                transform: translateY(100vh) translateX(20px);
+            }
+        }
+        
+        .snow-flake {
+            position: fixed;
+            top: -10px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-midnight selection:bg-holly selection:text-white">
+
+    <div id="cursor" class="magic-cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center bg-white/80 backdrop-blur-md">
+        <div class="flex items-center gap-4">
+            <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/—Pngtree—santa-clauses-set-for-christmas_5571348.png" alt="Logo" class="w-12 h-12 object-contain">
+            <span class="text-xl font-extrabold tracking-tighter uppercase text-holly">Your Favorite Santa Claus</span>
+        </div>
+        <div class="hidden md:flex gap-10 font-semibold text-sm tracking-widest uppercase">
+            <a href="#" class="hover:text-holly transition-colors">Experience</a>
+            <a href="#" class="hover:text-holly transition-colors">The Sleigh</a>
+            <a href="#" class="hover:text-holly transition-colors">Rates</a>
+            <a href="#" class="hover:text-holly transition-colors">Contact</a>
+        </div>
+        <button class="bg-holly text-white px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-lg shadow-holly/20">
+            Book the Magic
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-height-[110vh] flex items-center justify-center pt-32 pb-20 px-6 overflow-hidden bg-white">
+        <div class="container mx-auto grid lg:grid-cols-2 gap-12 items-center z-10">
+            <div class="text-center lg:text-left space-y-6">
+                <h2 class="font-cursive text-4xl text-holly">A Season of Wonder</h2>
+                <h1 class="text-7xl lg:text-9xl font-extrabold leading-none tracking-tighter">
+                    Believe In <br><span class="text-holly">The Magic</span> Again.
+                </h1>
+                <p class="text-xl text-slate-500 max-w-lg leading-relaxed font-light">
+                    Join Your Favorite Santa for an unforgettable journey of joy, laughter, and heart-to-heart moments. More than a visit—it's a memory that lasts a lifetime.
+                </p>
+                <div class="flex gap-4 justify-center lg:justify-start pt-6">
+                    <a href="#path" class="bg-midnight text-white px-10 py-5 rounded-4xl font-bold text-lg hover:shadow-2xl transition-all">Explore the Path</a>
+                </div>
+            </div>
+
+            <div class="relative flex justify-center">
+                <div class="absolute -inset-10 bg-champagne/30 rounded-full blur-3xl -z-10 animate-pulse"></div>
+                <!-- Note: Using a placeholder that fits the prompt's description for high-fidelity Santa image -->
+                <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/Group-1171275012-1.jpg" alt="Santa Claus in a modern wooden chair" class="w-[720px] h-[650px] object-cover rounded-4xl shadow-2xl border-8 border-white transform hover:scale-[1.02] transition-transform duration-700">
+                <div class="absolute -bottom-6 -right-6 glass-card p-6 rounded-4xl max-w-[200px]">
+                    <p class="font-cursive text-2xl text-holly">"Tell me your dreams..."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Dream Listener Section -->
+    <section class="py-24 bg-frosted/30 relative">
+        <div class="container mx-auto max-w-4xl px-6 text-center">
+            <i data-lucide="sparkles" class="mx-auto mb-6 text-holly w-12 h-12"></i>
+            <h2 class="text-5xl font-extrabold mb-12">The Dream Listener</h2>
+            <div class="relative group">
+                <div class="absolute -inset-4 bg-gradient-to-r from-holly via-champagne to-midnight rounded-[40px] opacity-20 blur-xl group-hover:opacity-40 transition-opacity"></div>
+                <div class="relative bg-white p-4 rounded-4xl shadow-2xl flex items-center gap-4 border-2 border-frosted">
+                    <input type="text" id="dream-input" placeholder="Type a dream to Santa..." class="flex-1 bg-transparent px-8 py-6 text-2xl font-light outline-none border-none">
+                    <button onclick="triggerMagic()" class="bg-holly p-6 rounded-[28px] text-white hover:rotate-12 transition-transform">
+                        <i data-lucide="wand-2" class="w-8 h-8"></i>
+                    </button>
+                </div>
+                <p class="mt-8 text-slate-400 uppercase tracking-[0.3em] text-xs font-bold">Whisper your heart's desire to the North Pole</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Magic Sleigh Track -->
+    <section id="path" class="sleigh-path-container py-32 overflow-hidden">
+        <svg class="path-svg" viewBox="0 0 1000 2000" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path id="sleigh-path" d="M500 0C500 200 100 300 100 600C100 900 900 1100 900 1400C900 1700 500 1800 500 2000" stroke="#E2E8F0" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+
+        <div class="container mx-auto px-6 relative z-10 h-full">
+            <div class="text-center mb-40">
+                <h3 class="text-6xl font-extrabold">The Sleigh Track</h3>
+                <p class="text-slate-400 mt-4">Scroll through the magic journey</p>
+            </div>
+
+            <!-- Card 1 -->
+            <div class="service-card absolute left-[10%] top-[15%] w-full max-w-sm">
+                <div class="glass-card p-10 rounded-4xl transform hover:-translate-y-4 transition-all duration-500 cursor-pointer group">
+                    <div class="w-20 h-20 bg-champagne rounded-3xl flex items-center justify-center mb-8 group-hover:bg-holly group-hover:text-white transition-colors">
+                        <i data-lucide="home" class="w-10 h-10"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold mb-4">Happy Home Visits</h4>
+                    <p class="text-slate-500 leading-relaxed">Cozy fireside chats and storybook moments in the comfort of your own living room.</p>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="service-card absolute right-[10%] top-[35%] w-full max-w-sm">
+                <div class="glass-card p-10 rounded-4xl transform hover:-translate-y-4 transition-all duration-500 cursor-pointer group">
+                    <div class="w-20 h-20 bg-frosted rounded-3xl flex items-center justify-center mb-8 group-hover:bg-holly group-hover:text-white transition-colors">
+                        <i data-lucide="party-popper" class="w-10 h-10"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold mb-4">Kids' Christmas Parties</h4>
+                    <p class="text-slate-500 leading-relaxed">Laughter-filled celebrations with games, treats, and the big man himself.</p>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="service-card absolute left-[15%] top-[55%] w-full max-w-sm">
+                <div class="glass-card p-10 rounded-4xl transform hover:-translate-y-4 transition-all duration-500 cursor-pointer group">
+                    <div class="w-20 h-20 bg-champagne rounded-3xl flex items-center justify-center mb-8 group-hover:bg-holly group-hover:text-white transition-colors">
+                        <i data-lucide="camera" class="w-10 h-10"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold mb-4">Family Fun Photos</h4>
+                    <p class="text-slate-500 leading-relaxed">Capture the twinkle in their eyes with high-end editorial photography sessions.</p>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="service-card absolute right-[15%] top-[75%] w-full max-w-sm">
+                <div class="glass-card p-10 rounded-4xl transform hover:-translate-y-4 transition-all duration-500 cursor-pointer group">
+                    <div class="w-20 h-20 bg-frosted rounded-3xl flex items-center justify-center mb-8 group-hover:bg-holly group-hover:text-white transition-colors">
+                        <i data-lucide="bell" class="w-10 h-10"></i>
+                    </div>
+                    <h4 class="text-3xl font-bold mb-4">Community Events</h4>
+                    <p class="text-slate-500 leading-relaxed">Sophisticated presence for corporate galas, parades, and holiday festivals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Gallery -->
+    <section id="gallery" class="pb-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl font-serif font-bold text-deepCrimson mb-16 text-center">Caught In The Moment</h2>
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_13_562312_9b3eb29e4e84463d9757f1ff86611d99mv2-1.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Santa Joy">
+                </div>
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_5_562312_a877bd2f7b2e43b9a5e9d9dcbcfa2785mv2-1-1.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Santa Kids">
+                </div>
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_9_562312_e1f44576a96e421290a9cabc9f10ec11mv2-2.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Santa Kids">
+                </div>
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_9_562312_e1f44576a96e421290a9cabc9f10ec11mv2-1.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Santa Kids">
+                </div>
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_12_562312_f0a6e43e5bdc45808c5d17de0a78f486mv2-1.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Magic Decor">
+                </div>
+                <div class="overflow-hidden rounded-3xl group">
+                    <img src="https://yourfavoritesantaclaus.com/wp-content/uploads/2026/02/imgi_10_562312_27d0d09967694a3aa80880c1bcc0f02fmv2-1.png" class="w-full transform group-hover:scale-110 transition-transform duration-700" alt="Gift">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer / Contact -->
+    <footer class="bg-midnight text-white pt-32 pb-12 relative overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-holly to-transparent opacity-50"></div>
+
+        <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-20 items-end">
+            <div>
+                <h2 class="text-7xl font-extrabold mb-12">Let's Make <br><span class="text-holly">History.</span></h2>
+                <div class="space-y-8 font-light text-xl text-slate-400">
+                    <p class="flex items-center gap-4"><i data-lucide="mail" class="text-holly"></i> yourfavoritesantaclaus@gmail.com</p>
+                    <p class="flex items-center gap-4"><i data-lucide="phone" class="text-holly"></i> 970-210-1232</p>
+                    <p class="flex items-center gap-4"><i data-lucide="map-pin" class="text-holly"></i> Serving the North Pole & Beyond</p>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div class="bg-white/5 backdrop-blur-xl p-12 rounded-4xl border border-white/10 relative z-10">
+                    <h3 class="text-3xl font-bold mb-8">North Pole Postbox</h3>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" placeholder="Your Name" class="bg-white/10 border-none p-5 rounded-2xl w-full focus:ring-2 ring-holly outline-none">
+                            <input type="email" placeholder="Email Address" class="bg-white/10 border-none p-5 rounded-2xl w-full focus:ring-2 ring-holly outline-none">
+                        </div>
+                        <textarea placeholder="Tell Santa your plans..." rows="4" class="bg-white/10 border-none p-5 rounded-2xl w-full focus:ring-2 ring-holly outline-none"></textarea>
+                        <button id="send-btn" type="button" class="w-full bg-holly py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-white hover:text-holly transition-all">
+                            <span>Send to Santa</span>
+                            <i data-lucide="send" id="btn-icon"></i>
+                        </button>
+                    </form>
+                </div>
+                <!-- Whimsical elements -->
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-holly/20 rounded-full blur-3xl animate-pulse"></div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8 text-slate-500 text-sm tracking-widest uppercase">
+            <p>&copy; 2024 Your Favorite Santa Claus. All Magic Reserved.</p>
+            <div class="flex gap-8">
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-white transition-colors">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Magic Cursor Trail
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+
+            // Spawn micro-sparkles
+            if (Math.random() > 0.8) {
+                createSparkle(e.clientX, e.clientY);
+            }
+        });
+
+        function createSparkle(x, y) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            const size = Math.random() * 5 + 2;
+            sparkle.style.width = size + 'px';
+            sparkle.style.height = size + 'px';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.backgroundColor = ['#D41421', '#F7E7CE', '#FFFFFF'][Math.floor(Math.random() * 3)];
+            document.body.appendChild(sparkle);
+
+            gsap.to(sparkle, {
+                x: (Math.random() - 0.5) * 100,
+                y: (Math.random() - 0.5) * 100,
+                opacity: 0,
+                scale: 0,
+                duration: 1,
+                onComplete: () => sparkle.remove()
+            });
+        }
+
+        // Snowfall Generation
+        function createSnow() {
+            const flake = document.createElement('div');
+            flake.className = 'snow-flake';
+            const size = Math.random() * 5 + 2;
+            flake.style.width = size + 'px';
+            flake.style.height = size + 'px';
+            flake.style.left = Math.random() * 100 + 'vw';
+            flake.style.animation = `snow ${Math.random() * 3 + 4}s linear forwards`;
+            document.body.appendChild(flake);
+            setTimeout(() => flake.remove(), 7000);
+        }
+        setInterval(createSnow, 100);
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Parallax cards on path
+        gsap.utils.toArray('.service-card').forEach((card, i) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top bottom-=100",
+                    end: "bottom center",
+                    scrub: 1
+                },
+                x: i % 2 === 0 ? -100 : 100,
+                opacity: 0,
+                scale: 0.8,
+                rotation: i % 2 === 0 ? -5 : 5
+            });
+        });
+
+        // Dream Listener Sparkle Effect
+        function triggerMagic() {
+            const input = document.getElementById('dream-input');
+            if (!input.value) return;
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const rect = input.getBoundingClientRect();
+                    createSparkle(
+                        rect.left + Math.random() * rect.width,
+                        rect.top + Math.random() * rect.height
+                    );
+                }, i * 20);
+            }
+            input.value = "";
+            alert("✨ Your dream has been sent to the North Pole! ✨");
+        }
+
+        // Send Button Reindeer Transformation
+        const sendBtn = document.getElementById('send-btn');
+        const btnIcon = document.getElementById('btn-icon');
+
+        sendBtn.addEventListener('click', () => {
+            sendBtn.innerHTML = `<span>Flying to Sleigh...</span> <i data-lucide="snail" class="animate-bounce"></i>`;
+            lucide.createIcons();
+
+            gsap.to(sendBtn, {
+                x: 1000,
+                opacity: 0,
+                duration: 1.5,
+                ease: "power2.in",
+                onComplete: () => {
+                    sendBtn.style.display = 'none';
+                    alert("Ho Ho Ho! Message Received!");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
